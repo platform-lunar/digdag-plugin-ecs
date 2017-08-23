@@ -1,0 +1,44 @@
+_export:
+  plugin:
+    repositories:
+      - file://${repos}
+    dependencies:
+      - com.github.platform-lunar:digdag-plugin-ecs:0.1.0
+
++ecs_register_action:
+  ecs_register>: Register dummy application
+  family: digdag-ecs-plugin-test
+  container_definitions:
+    - name: digdag-ecs-plugin-app-test
+      image: alpine:3.6
+      cpu: 256
+      memory: 256
+      log_configuration:
+        log_driver: syslog
+
++import:
+  _parallel: true
+
+  +ecs_run_action1:
+    ecs_run>: Run dummy ECS application1
+    cluster: ${cluster}
+    count: 1
+    overrides:
+      container_overrides:
+        - name: digdag-ecs-plugin-app-test
+          command:
+            - /bin/echo
+            - "hello"
+    task_definition: ${ecs.last_task_family}
+
+  +ecs_run_action2:
+    ecs_run>: Run dummy ECS application2
+    cluster: ${cluster}
+    count: 1
+    overrides:
+      container_overrides:
+        - name: digdag-ecs-plugin-app-test
+          command:
+            - /bin/echo
+            - "world"
+    task_definition: ${ecs.last_task_family}
