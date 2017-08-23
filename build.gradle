@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
 
-group = 'com.github.saulius.digdag.plugin'
+group = 'com.github.platformlunar'
 version = '0.1.0'
 
 def digdagVersion = '0.9.15'
