@@ -1,4 +1,4 @@
-package com.platformlunar.digdag.plugin.ecs;
+package com.github.platformlunar.digdag.plugin.ecs;
 
 import com.google.common.base.Optional;
 
