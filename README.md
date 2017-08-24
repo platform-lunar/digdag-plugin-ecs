@@ -16,7 +16,7 @@ _export:
     repositories:
       - https://jitpack.io
     dependencies:
-      - com.platformlunar.digdag.plugin:digdag-plugin-ecs:0.1.0
+      - com.github.platform-lunar:digdag-plugin-ecs:0.1.0
 
 +ecs_register_action:
   ecs_register>: Register dummy application
